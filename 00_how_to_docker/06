@@ -1,0 +1,5 @@
+docker pull nginx
+docker run -d -p 5000:80 --name overlord --restart always nginx
+
+-d refers to the detached flag, meaning it'll run in the background.
+-p is the port, meaning port 80 of overlord will be attached to port 5000 of Char

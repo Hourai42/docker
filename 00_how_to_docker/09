@@ -1,0 +1,9 @@
+docker run -it debian sh
+apt-get update
+apt-get upgrade -y
+apt-get install git build-essential -y
+apt-get install clang -y
+
+-y means assume yes to all prompts
+update updates all package lists, upgrade goes to a newer version
+Next two are installing git and clang respectively
