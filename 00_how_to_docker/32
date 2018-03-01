@@ -1,0 +1,6 @@
+docker rm -f $(docker ps -a -q)
+
+Since it has to be one command
+-f is --force, meaning it'll even kill running containers without having to stop them
+-a is --all to display all containers no matter the status
+-q is --quiet

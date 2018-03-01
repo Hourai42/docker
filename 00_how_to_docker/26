@@ -1,0 +1,1 @@
+ docker service create -d --env OC_USERNAME=ttran --env OC_PASSWD=ttran --network overmind --replicas=2 --name engineering-bay 42school/engineering-bay
