@@ -1,0 +1,15 @@
+docker-machine ssh Char
+mkdir /home/python
+docker-machine scp app.py Char:/home/python
+docker run -d -t -p 3000:3000 -v /home/python:/root --name Abathur python:2-slim
+docker exec Abathur pip install flask
+docker exec --env FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port=3000
+
+-v to declare a volume at runtime
+docker-machine ssh to log into said virtual machine
+docker-machine scp to copy files from local host to a virtual machine, or vice versa
+"http://containertutorials.com/docker-compose/flask-simple-app.html"
+docker exec runs a command in a running container
+
+If you want to see the "Hello World", you have to log into "Char"
+through docker-machine ssh Char then do "curl http://0.0.0.0:3000/"

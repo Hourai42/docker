@@ -18,7 +18,13 @@ exit
 docker --help
 docker volume create [name]
 docker volume ls
-
+docker stop [container]
+docker exec [container] env
+docker logs spawning-pool
+docker restart [container]
+docker-machine ssh [virtual machine]
+docker-machine scp [file] [virtual machine]:[location]
+ 
 Vocabulary
 ----------
 image - executable package that includes everything needed to run an application

@@ -1,0 +1,4 @@
+docker run -d --restart on-failure --mount type=volume,source=hatchery,destination=/etc/mysql --env MYSQL_DATABASE="zerglings" --env MYSQL_ROOT_PASSWORD=Kerrigan --name spawning-pool mysql
+
+--env is the environment flag
+-v and --mount are equiv. but mount is easier to use according to docs
