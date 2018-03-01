@@ -4,41 +4,78 @@ Aiight, let's learn how to use docker so you can install Anaconda on these macs.
 Commands used!
 -------------
 docker version
+
 docker-machine create --driver virtualbox Char
+
 docker-machine rm [name]
+
 docker-machine ls
+
 docker-machine ip Char
+
 docker-machine env Char
+
 eval $(docker-machine env Char)
+
 docker ps
+
 docker pull [image]
+
 docker run [image]
+
 docker inspect [container]
+
 exit
+
 docker --help
+
 docker volume create [name]
+
 docker volume ls
+
 docker stop [container]
+
 docker exec [container] env
+
 docker logs spawning-pool
+
 docker restart [container]
+
 docker-machine ssh [virtual machine]
+
 docker-machine scp [file] [virtual machine]:[location]
+
 docker exec
+
 docker swarm init --advertise-addr [IP ADDRESS OF VIRTUAL MACHINE]
+
 docker-machine rm default to clear an inactive machine
+
 docker swarm join --token [TOKEN]
+
 docker swarm join-token manager
+
 docker network create [name]
+
 docker node ls
+
 docker node inspect [node ID]
+
 docker service ls
+
 docker service logs [service]
+
 docker service scale [service]=[number of replicas]
+
 docker service rm [service]
+
 docker rmi [image]
+
 docker images
+
 docker-machine rm [machine]
+
+docker build [OPTIONS] PATH | URL | 
 
 Vocabulary
 ----------
@@ -60,3 +97,44 @@ bind mounts - dependent on directory structure of host machine, limited function
 swarm - a clustering and scheduling tool for Docker containers-- admins and developers can establish and manage a cluster of Docker nodes as a single virtual system
 
 replica - a replicated service is a docker swarm service that has a specified number of replicas running. Consists of multiple instances of the specified docker container
+
+Best Practices for Building Dockerfiles
+--------------------------------------
+Where you issue docker build is called the build context, and that's usually the current directory. You can specify another location by using the -f flag. 
+
+A .dockerignore file would be very helpful to exclude irrelevant files.
+
+1. Install tools required to build project
+2. Install or update library dependencies
+3. Generate application
+Several layers, ordered from less frequently changed to more frequent.
+
+Add a backslash \ to sort multi-line arguments
+
+For "FROM" instruction, use current official repositories as the basis for your image
+
+Can add labels to image to help organize images by project
+
+Always combine RUN apt-get update with apt-get install
+
+Use ENV to update the PATH environment variable for the software your container installs
+
+FROM sets the base image for the rest of the instructions
+
+ENTRYPOINT = default app you wish to run
+
+CMD - takes various forms, but when used with ENTRYPOINT, ENTRYPOINT uses the parameters that CMD provides
+
+EXPOSE - Informs what port the container will be listening on, can change host port via -p parameter
+
+COPY - Copy files/folders from the source to the destination in container
+
+WORKDIR - Use absolute paths instead of instructions
+
+ONBUILD - Executes after current Dockerfile build completes, executes in any child image drived FROM current image
+
+Run in interactive mode with a shell to work your way through problems! Ie. docker run --rm -it alpine sh
+
+Install wget through apt-get install wget, then you can install things you require while testing.
+
+https://linode.com/docs/development/version-control/install-gogs-on-debian/
