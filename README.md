@@ -138,3 +138,5 @@ Run in interactive mode with a shell to work your way through problems! Ie. dock
 Install wget through apt-get install wget, then you can install things you require while testing.
 
 https://linode.com/docs/development/version-control/install-gogs-on-debian/
+
+Don't hardcode the swarm join token, -P to connect all ports, make sure your destinations are correct.
